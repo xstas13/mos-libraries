@@ -1,0 +1,23 @@
+.library-info {
+    .modal-title {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &__info-item {
+        margin-bottom: 1.5rem;
+
+        .label {
+            color: var(--text-light, rgba(0,0,0,0.5));
+        }
+
+        .info-item__addr {
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--bs-tertiary-color, #909294);
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+}

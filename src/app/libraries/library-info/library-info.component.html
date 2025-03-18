@@ -1,0 +1,55 @@
+<ng-template #templateModal>
+    <div class="library-info modal-header">
+        <h4 class="modal-title pull-left">{{libraryInfo?.CommonName}}</h4>
+
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <div class="library-info__info-item">
+            <div class="label">Категория:</div>
+            <div class="value">{{libraryInfo?.Category}}</div>
+        </div>
+
+        <div class="library-info__info-item">
+            <div class="label">Общепринятое наименование:</div>
+            <div class="value">{{libraryInfo?.CommonName}}</div>
+        </div>
+
+        <div class="library-info__info-item">
+            <div class="label">Полное официальное наименование:</div>
+            <div class="value">{{libraryInfo?.FullName}}</div>
+        </div>
+
+        <div class="library-info__info-item">
+            <div class="label">Сокращенное официальное наименование:</div>
+            <div class="value">{{libraryInfo?.ShortName}}</div>
+        </div>
+
+        <div class="library-info__info-item">
+            <div class="label">Вышестоящая организация:</div>
+            <div class="value">{{libraryInfo?.ChiefOrg}}</div>
+        </div>
+
+        <div class="library-info__info-item">
+            <div class="label">ФИО руководителя:</div>
+            <div class="value">{{libraryInfo?.ChiefName}}</div>
+        </div>
+
+        <div class="library-info__info-item">
+            <div class="label">Должность руководителя:</div>
+            <div class="value">{{libraryInfo?.ChiefPosition}}</div>
+        </div>
+
+        <div class="library-info__info-item">
+            <div class="label">Адреса объекта:</div>
+            <div class="value">
+                @for (address of libraryInfo?.ObjectAddress; track address.global_id) {
+                <div class="info-item__addr">{{address.Address}}</div>
+                }
+            </div>
+        </div>
+    </div>
+</ng-template>

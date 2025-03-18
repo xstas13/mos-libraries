@@ -1,0 +1,23 @@
+.libraries {
+    &__head-img-wrapper {
+        height: 100px;
+        overflow: hidden;
+        border-radius: .375rem;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &__err-mess {
+        color: var(--text-danger, #dc3545);
+    }
+
+    &__loading {
+        color: var(--text-secondary, #6c757d);
+    }
+
+    ::ng-deep .highlighted-text {
+        background-color: var(--text-selected, yellow);
+    }
+}

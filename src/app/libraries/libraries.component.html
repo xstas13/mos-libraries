@@ -1,0 +1,54 @@
+<div class="libraries">
+    <div class="libraries__head-img-wrapper mb-4">
+        <img src="https://img.freepik.com/free-photo/beautiful-milky-way-night-sky_53876-139825.jpg"
+            alt="beautiful-milky-way-night-sky" />
+    </div>
+
+    <form class="mb-4" [formGroup]="searchForm" (ngSubmit)="submitSearchForm()">
+        <div class="row align-items-end">
+            <div class="col">
+                <label for="name" class="form-label">Поиск по имени</label>
+                <input type="text" class="form-control" id="name" placeholder="Библиотека №42" maxlength="100"
+                    formControlName="name">
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary" [disabled]="loadLibrariesProgress">Поиск</button>
+            </div>
+        </div>
+    </form>
+
+    @if (loadLibrariesErr) {
+    <div class="libraries__err-mess alert alert-danger">{{loadLibrariesErr}}</div>
+    }
+
+    @if (loadLibrariesProgress) {
+    <div class="libraries__loading">Загрузка...</div>
+    }
+
+    @if (libraries.length) {
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Полное официальное наименование</th>
+                <th>Адрес</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (library of libraries; track library.global_id; let index = $index) {
+            <tr (click)="showLibrayInfo(library)">
+                <td>{{index + 1}}</td>
+                <td [innerHTML]="library.FullName | highlighter:searchText"></td>
+                <td>
+                    @for (address of library.ObjectAddress; track address.global_id) {
+                    <div>{{address.Address}}</div>
+                    }
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    }
+</div>
+
+<app-library-info></app-library-info>
